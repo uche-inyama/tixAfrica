@@ -36,8 +36,8 @@ RSpec.describe "Events", type: :request do
     } }
 
     before { post "/events", params: valid_event }
-    it 'returns status code 204' do
-      expect(response).to have_http_status(204)
+    it 'returns status code 201' do
+      expect(response).to have_http_status(201)
     end
   end
 
