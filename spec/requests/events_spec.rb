@@ -4,6 +4,7 @@ RSpec.describe "Events", type: :request do
 
   let!(:user) { create(:user) }
   let!(:events) { create_list(:event, 10, user_id: user.id) }
+  let(:id) { events.first.id }
 
   describe "GET /events" do
     before { get "/events" }
@@ -35,8 +36,27 @@ RSpec.describe "Events", type: :request do
     } }
 
     before { post "/events", params: valid_event }
-    it 'returns status code 201' do
-      expect(response).to have_http_status(201)
+    it 'returns status code 204' do
+      expect(response).to have_http_status(204)
+    end
+  end
+
+  describe "PUT events/:id" do
+    let(:valid_event) {{
+      address: 'abc'
+    }}
+    before { put "/events/#{id}", params: valid_event }
+
+    it 'returns status 204' do
+      expect(response).to have_http_status(204)
+    end
+  end
+
+  describe "DELETE events/:id" do
+    before { delete "/events/#{id}" }
+
+    it 'returns status code 204' do
+      expect(response).to have_http_status(204)
     end
   end
 end
