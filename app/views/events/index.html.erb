@@ -1,1 +1,12 @@
-<h2>Say hello to events</h2>
+<h4><%= current_user.email %>'s events</h4>
+<% @events.each do |event| %>
+  <%= link_to  event.theme, event_path(event) %> <br />
+  <%= link_to "Edit", edit_event_path(event) %> <%= link_to "delete", event_path(event), method: :delete %> <br /> <br />
+<% end %>
+
+<h4>All Events</h4>
+
+<% @all_events.each do |event| %>
+  <%= link_to event.theme, event_path(event)%> <br />
+  <%= link_to "Edit", edit_event_path(event) %> <%= link_to "delete", event_path(event), method: :delete %> <br /> <br />
+<% end %>
