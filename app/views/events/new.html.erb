@@ -1,1 +1,19 @@
 <h2>Let's do something new</h2>
+
+<%= form_with model: @event do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.date_field :date %> <br />
+  <%= f.time_field :time %> <br />
+  <%= f.text_field :address, placeholder: :address %> <br />
+  <%= f.text_field :theme , placeholder: :theme %> <br />
+  <%= f.text_field :details, placeholder: :details %> <br />
+  <%= f.file_field :image %> <br />
+  <%= f.radio_button :status, "active" %>
+  <%= f.label :status_active, "active" %> 
+  <%= f.radio_button :status, "inactive" %>
+  <%= f.label :status_inacive, "inactive" %> <br />
+
+  <%= f.select :event_type, [["free", "free"], ["paid", "paid"]] %> <br />
+
+  <%= f.submit %>
+<% end %>

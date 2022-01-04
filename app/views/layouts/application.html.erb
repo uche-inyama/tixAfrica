@@ -13,6 +13,14 @@
   <body>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
+      
+      <section class="header">
+        <nav>
+          <ul>
+            <%= link_to "create Event", new_event_path %>
+          </ul>
+        </nav>
+      </section>
     <%= yield %>
   </body>
 </html>
