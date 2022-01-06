@@ -25,18 +25,22 @@ RSpec.describe "Events", type: :request do
   end
 
   describe "POST /events" do
-    let(:params) { {
-      start_date: 'Sunday, January 9 2022',
-      end_date: 'Sunday, January 9 2022',
-      time: '7:00 PM - 12:00 AM',
-      address: 'xyz',
-      theme: 'hello world',
-      details: 'hello world',
-      image: 'xyz',
-      event_type: 'paid',
-      status: 'active',
-      user_id: 1
-    } }
+    let(:params) do 
+      { 
+        event: {
+        start_date: 'Sunday, January 9 2022',
+        end_date: 'Sunday, January 9 2022',
+        time: '7:00 PM - 12:00 AM',
+        address: 'xyz',
+        theme: 'hello world',
+        details: 'hello world',
+        image: 'xyz',
+        event_type: 'paid',
+        status: 'active',
+        user_id: 1
+      }
+    }
+  end
 
     before { post "/events", params: params }
     it 'returns status code 201' do

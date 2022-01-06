@@ -12,8 +12,3 @@ FactoryBot.define do
     user_id { nil }
   end
 end
-
-# "size":122730,
-# "mime_type":"image/png", 
-# "width": "359",
-# "height": "360"
