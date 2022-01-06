@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :event do
-    start_date { Faker::Date.in_date_period }
-    end_date { Faker::Date.in_date_period }
+    start_date { '2022-01-04' }
+    end_date { '2022-01-05' }
     time { Faker::Time.backward(days: 5, period: :morning, format: :short) }
     address { Faker::Address.full_address }
     theme { Faker::Quote.robin }
