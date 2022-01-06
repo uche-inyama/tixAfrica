@@ -2,7 +2,7 @@
 
 <%= form_with model: @event do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.date_field :date %> <br />
+  <%= f.date_field :start_date %> <%= f.date_field :end_date %> <br /> <br />
   <%= f.time_field :time %> <br />
   <%= f.text_field :address, placeholder: :address %> <br />
   <%= f.text_field :theme , placeholder: :theme %> <br />

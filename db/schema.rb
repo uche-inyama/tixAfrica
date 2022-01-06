@@ -16,12 +16,13 @@ ActiveRecord::Schema.define(version: 2022_01_03_060548) do
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
-    t.date "date"
+    t.date "start_date"
+    t.date "end_date"
     t.time "time"
     t.text "address"
     t.text "theme"
     t.text "details"
-    t.string "image"
+    t.text "image_data"
     t.string "event_type"
     t.string "status"
     t.bigint "user_id", null: false

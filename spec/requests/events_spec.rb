@@ -1,4 +1,5 @@
 require 'rails_helper'
+include Warden::Test::Helpers
 
 RSpec.describe "Events", type: :request do
 
@@ -7,16 +8,16 @@ RSpec.describe "Events", type: :request do
   let(:id) { events.first.id }
 
   describe "GET /events" do
+    before { login_as user, scope: :user }
     before { get "/events" }
 
     it 'returns status code 200' do
       expect(response).to be_successful
-      expect(response.body).to include("Say hello to events")
     end
   end
 
   describe "GET /events/:id" do
-    before { get "/events/#{user.id}"}
+    before { get "/events/#{id}"}
 
     it 'returns status code 200' do
       expect(response).to have_http_status(200)
@@ -24,9 +25,11 @@ RSpec.describe "Events", type: :request do
   end
 
   describe "POST /events" do
-    let(:valid_event) { {
+    let(:params) { {
+      start_date: 'Sunday, January 9 2022',
+      end_date: 'Sunday, January 9 2022',
       time: '7:00 PM - 12:00 AM',
-      Address: 'xyz',
+      address: 'xyz',
       theme: 'hello world',
       details: 'hello world',
       image: 'xyz',
@@ -35,28 +38,29 @@ RSpec.describe "Events", type: :request do
       user_id: 1
     } }
 
-    before { post "/events", params: valid_event }
+    before { post "/events", params: params }
     it 'returns status code 201' do
-      expect(response).to have_http_status(201)
+      expect(response).to have_http_status(302)
     end
   end
 
   describe "PUT events/:id" do
-    let(:valid_event) {{
-      address: 'abc'
-    }}
-    before { put "/events/#{id}", params: valid_event }
-
+    let(:params) do 
+      { 
+        event: { address: 'xyz', user_id: 1 }
+      }
+    end
+    before { put "/events/#{id}", params: params }
     it 'returns status 204' do
-      expect(response).to have_http_status(204)
+      expect(response).to have_http_status(302)
     end
   end
 
   describe "DELETE events/:id" do
     before { delete "/events/#{id}" }
 
-    it 'returns status code 204' do
-      expect(response).to have_http_status(204)
+    it 'returns status code 302' do
+      expect(response).to have_http_status(302)
     end
   end
 end

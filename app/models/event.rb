@@ -1,5 +1,13 @@
 class Event < ApplicationRecord
-  belongs_to :user
+  include  ImageUploader::Attachment(:image)
 
-  validates_presence_of :date, :time, :address, :theme, :details, :image, :event_type, :status
+  belongs_to :user
+  validates_presence_of :start_date, :end_date, :time, 
+  :address, :theme, :details, :event_type, :status
+
+  # def set_status
+  #   if end_date < date.now
+  #     status = 'inactive'
+  #   end
+  # end
 end
