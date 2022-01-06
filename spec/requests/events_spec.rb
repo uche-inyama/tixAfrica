@@ -25,16 +25,18 @@ RSpec.describe "Events", type: :request do
   end
 
   describe "POST /events" do
+    before { login_as user, scope: :user }
+
     let(:params) do 
       { 
         event: {
         start_date: 'Sunday, January 9 2022',
         end_date: 'Sunday, January 9 2022',
         time: '7:00 PM - 12:00 AM',
-        address: 'xyz',
+        address: 'abc',
         theme: 'hello world',
         details: 'hello world',
-        image: 'xyz',
+        image: nil,
         event_type: 'paid',
         status: 'active',
         user_id: 1
@@ -43,8 +45,8 @@ RSpec.describe "Events", type: :request do
   end
 
     before { post "/events", params: params }
-    it 'returns status code 201' do
-      expect(response).to have_http_status(302)
+    it 'returns status code 204' do
+      expect(response).to have_http_status(204)
     end
   end
 
@@ -55,7 +57,7 @@ RSpec.describe "Events", type: :request do
       }
     end
     before { put "/events/#{id}", params: params }
-    it 'returns status 204' do
+    it 'returns status 302' do
       expect(response).to have_http_status(302)
     end
   end

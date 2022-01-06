@@ -4,13 +4,24 @@
 
 <h4><%= current_user.email %>'s events</h4>
 <% @events.each do |event| %>
-  <%= link_to  event.theme, event_path(event) %> <span><%= event.get_status(event.end_date) %></span> <br />
+  <%= link_to event_path(event) do %>
+    <%= image_tag(event.image.url, class: "author_image") if event.image %>
+  <% end %> <br />
+  <p><%= event.theme %></p>
+  <p>status: <%= event.get_status(event.end_date) %></p>
+  <p>Type of event: <%= event.event_type %></p>
   <%= link_to "Edit", edit_event_path(event) %> <%= link_to "delete", event_path(event), method: :delete %> <br /> <br />
 <% end %>
 
 <h4>All Events</h4>
 
 <% @all_events.each do |event| %>
-  <%= link_to event.theme, event_path(event)%> <span> status: <%= event.get_status(event.end_date) %></span> <br />
+  <%= link_to event_path(event) do %>
+    <%= image_tag(event.image.url, class: "author_image") if event.image %>
+  <% end %> <br />
+  <p><%= event.theme %></p>
+  <p>status: <%= event.get_status(event.end_date) %></p>
+  <p>Type of event: <%= event.event_type %></p>
   <%= link_to "Edit", edit_event_path(event) %> <%= link_to "delete", event_path(event), method: :delete %> <br /> <br />
 <% end %>
+
