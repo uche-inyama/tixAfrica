@@ -18,9 +18,10 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build(event_params)
     if @event.save
-      redirect_to events_path
-    else 
+      redirect_to events_path, notice: "Event successfully created"
+    else
       render :new
+      # redirect_to new_event_path
     end
   end
 
@@ -30,12 +31,12 @@ class EventsController < ApplicationController
 
   def update
     @event.update(event_params)
-    redirect_to events_path
+    redirect_to events_path, notice: "Event successfully updated"
   end
 
   def destroy
     @event.destroy
-    redirect_to events_path
+    redirect_to events_path, notice: "Event successfully deleted"
   end
 
   private

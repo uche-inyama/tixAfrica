@@ -1,19 +1,50 @@
 <h2>new event</h2>
 
-<%= form_with model: @event do |f| %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.date_field :start_date %> <%= f.date_field :end_date %> <br /> <br />
-  <%= f.time_field :time %> <br />
-  <%= f.text_field :address, placeholder: :address %> <br />
-  <%= f.text_field :theme , placeholder: :theme %> <br />
-  <%= f.text_field :details, placeholder: :details %> <br />
-  <%= f.file_field :image %> <br />
-  <%= f.radio_button :status, "active" %>
-  <%= f.label :status_active, "active" %> 
-  <%= f.radio_button :status, "inactive" %>
-  <%= f.label :status_inacive, "inactive" %> <br />
+<%= form_with model: @event do |form| %>
+  <%= render "shared/error_messages", form: form %>
 
-  <%= f.select :event_type, [["free", "free"], ["paid", "paid"]] %> <br />
+  <%= form.hidden_field :user_id, value: current_user.id %>
 
-  <%= f.submit %>
+  <div class="field mb-2 ">
+    <div><%= form.label :date %></div>
+      <%= form.date_field :start_date %> <%= form.date_field :end_date %>
+  </div>
+  <div class="field mb-2">
+    <div><%= form.label :time %></div>
+    <%= form.time_field :time %>
+  </div>
+
+  <div class="field mb-3">
+    <div><%= form.label :address %></div>
+    <%= form.text_field :address, placeholder: :address %>
+  </div>
+
+  <div class="field mb-2">
+    <div><%= form.label :theme %></div>
+    <%= form.text_field :theme , placeholder: :theme %>
+  </div>
+
+  <div class="field mb-2">
+    <div><%= form.label :details %></div>
+    <%= form.text_field :details, placeholder: :details %>
+  </div>
+
+  <div class="field mb-2">
+    <div><%= form.label :image %></div>
+     <%= form.file_field :image %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.radio_button :status, "active" %>
+    <%= form.label :active %>
+
+    <%= form.radio_button :status, "inactive" %>
+    <%= form.label :inacive, "inactive" %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.select :event_type, [["free", "free"], ["paid", "paid"]] %>
+  </div>
+
+  <%= form.submit %>
 <% end %>

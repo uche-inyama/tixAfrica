@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <%= link_to "Events", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <% if current_user %> 
+          <%= link_to "Create Event", new_event_path, class: "px-3" %>
+          <%= link_to "logout", destroy_user_session_path, class: "px-3", method: :delete %>
+        <% else %>
+          <%= link_to "sign up", new_user_registration_path, class: "px-3" %>
+          <%= link_to "login", user_session_path, class: "px-3" %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
