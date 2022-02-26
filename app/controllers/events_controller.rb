@@ -21,7 +21,6 @@ class EventsController < ApplicationController
       redirect_to events_path, notice: "Event successfully created"
     else
       render :new
-      # redirect_to new_event_path
     end
   end
 

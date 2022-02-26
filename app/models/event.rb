@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   include  ImageUploader::Attachment(:image)
 
   belongs_to :user
-  validates_presence_of :start_date, :end_date, :time, 
+  validates_presence_of :time, 
   :address, :theme, :details, :event_type, :status, :image
 
   validates_date :start_date, :on_or_after => lambda { Date.current },

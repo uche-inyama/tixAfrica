@@ -1,3 +1,18 @@
 <section class="home">
   <h3>I am home...</h3>
+  <div class="row">
+    <ul class="d-flex">
+      <% @events.each do |event| %>
+        <li class="mx-1 list-unstyled ">
+          <div class="row image">
+            <%= image_tag(event.image.url, class: "author_image") if event.image %>
+          </div>
+          <div class="row description py-2">
+            <p class="mb-1 font-weight-bold"><%= event.theme %></p>
+            <p>Type of event: <%= event.event_type %></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </section>
