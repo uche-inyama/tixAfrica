@@ -1,7 +1,7 @@
 <h4>All Events</h4>
 
 <% @all_events.each do |event| %>
-  <%= link_to event_path(event) do %>
+  <%= link_to "#" do %>
     <%= image_tag(event.image.url, class: "author_image") if event.image %>
   <% end %> <br />
   <p><%= event.theme %></p>

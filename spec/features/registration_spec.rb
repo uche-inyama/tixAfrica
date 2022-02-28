@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Users", type: :feature do
+RSpec.feature "Registration", type: :feature do
   context 'create new user' do
     scenario "should be successful" do
       visit new_user_registration_path
