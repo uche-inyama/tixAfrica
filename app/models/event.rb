@@ -3,7 +3,7 @@ class Event < ApplicationRecord
 
   belongs_to :user
   validates_presence_of :time, 
-  :address, :theme, :details, :event_type, :status, :image
+  :address, :theme, :details, :event_type, :status
 
   validates_date :start_date, :on_or_after => lambda { Date.current },
   :on_or_after_message => "must be on or after today's date.",

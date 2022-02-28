@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :event do
-    start_date { '2022-01-04' }
-    end_date { '2022-01-05' }
+    start_date { Faker::Date.forward(days: 5) }
+    end_date { Faker::Date.forward(days: 20)}
     time { Faker::Time.backward(days: 5, period: :morning, format: :short) }
     address { Faker::Address.full_address }
     theme { Faker::Quote.robin }
@@ -12,3 +12,5 @@ FactoryBot.define do
     user_id { nil }
   end
 end
+
+

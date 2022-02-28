@@ -45,8 +45,8 @@ RSpec.describe "Events", type: :request do
   end
 
     before { post "/events", params: params }
-    it 'returns status code 302' do
-      expect(response).to have_http_status(302)
+    it 'returns status code 200' do
+      expect(response).to have_http_status(200)
     end
   end
 
