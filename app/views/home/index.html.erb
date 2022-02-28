@@ -1,9 +1,9 @@
 <section class="home">
   <h3>I am home...</h3>
   <div class="row">
-    <ul class="d-flex">
+    <ul class="row">
       <% @events.each do |event| %>
-        <li class="mx-1 list-unstyled ">
+        <li class="mx-1 list-unstyled col">
           <div class="row image">
             <%= image_tag(event.image.url, class: "author_image") if event.image %>
           </div>
