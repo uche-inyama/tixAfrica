@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @all_events = Event.all
+    @all_events = Event.all.limit(4)
     @events = current_user.events
   end
 
