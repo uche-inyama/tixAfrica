@@ -15,6 +15,10 @@ module RequestSpecHelper
     logout(warden_scope(resource))
   end
 
+  def docs
+    session = Capybara::Session.new(:rack_test)
+  end
+
   private
 
   def warden_scope(resource)

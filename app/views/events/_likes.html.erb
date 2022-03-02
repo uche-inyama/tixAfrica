@@ -1,0 +1,7 @@
+<% if user_signed_in? && current_user.likes?(event) %>
+  <%= link_to "Unlike", event_like_path(event), method: :delete, remote: true %>
+<% else %>
+  <%= link_to "Like", event_like_path(event), method: :post, remote: true %>
+<% end %>
+
+<div><%= pluralize(event.likes.count, 'like') %></div>

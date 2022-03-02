@@ -2,6 +2,8 @@ class Event < ApplicationRecord
   include  ImageUploader::Attachment(:image)
 
   belongs_to :user
+  has_many :likes, dependent: :destroy
+  
   validates_presence_of :time, 
   :address, :theme, :details, :event_type, :status
 

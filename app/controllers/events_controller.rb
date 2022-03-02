@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @all_events = Event.all.limit(4)
+    @all_events = Event.all.order(created_at: :desc).limit(4)
     @events = current_user.events
   end
 

@@ -1,17 +1,21 @@
-<h4>All Events</h4>
+<h4 class="py-3 mx-auto">All Events</h4>
 
-<ul class="row">
+<ul class="row p-0" id="events">
   <% @all_events.each do |event| %>
-    <div class="col">
-      <%= link_to "#" do %>
-        <%= image_tag(event.image.url, class: "author_image") if event.image %>
-      <% end %> <br />
-      <p><%= event.theme %></p>
-      <p>status: <%= event.get_status(event.end_date) %></p>
-      <p>Type of event: <%= event.event_type %></p>
-      <%= link_to "Edit", edit_event_path(event) %> <%= link_to "delete", event_path(event), method: :delete %> <br /> <br />
+    <div class="col mb-3">
+      <div class="mb-3">
+        <%= link_to "#" do %>
+          <%= image_tag(event.image.url, class: "author_image") if event.image %>
+        <% end %>
+      </div>
+      <div class="">
+        <p><strong><%= event.theme %></strong></p>
+        <p><strong>Status: <%= event.get_status(event.end_date) %>  Type of event: <%= event.event_type %></strong></p>
+        <div id="likes" class="mb-2">
+          <%= render partial: 'likes', locals: {event: event} %>
+        </div>
+        <%= link_to "Edit", edit_event_path(event) %> <%= link_to "delete", event_path(event), method: :delete %>
+      </div>
     </div>
   <% end %>
 </ul>
-
-

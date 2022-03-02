@@ -5,4 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :events, dependent: :destroy
+  has_many :likes
+
+  def likes?(event)
+    event.likes.where(user_id: id).any?
+  end
 end
