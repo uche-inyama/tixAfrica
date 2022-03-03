@@ -23,7 +23,6 @@ class EventsController < ApplicationController
       @users.each do |user|
         Notification.create(recipient: user, user: current_user, action: "posted", notifiable: @event)
       end
-      
       redirect_to events_path, notice: "Event successfully created"
     else
       render :new
