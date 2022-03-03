@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :get_users, only: [:create]
 
   def new
     @event = Event.new
@@ -17,7 +18,12 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(event_params)
+    debugger
     if @event.save
+      @users.each do |user|
+        Notification.create(recipient: user, user: current_user, action: "posted", notifiable: @event)
+      end
+      
       redirect_to events_path, notice: "Event successfully created"
     else
       render :new
@@ -43,6 +49,10 @@ class EventsController < ApplicationController
   def set_event
     @event = Event.find(params[:id])
   end 
+  
+  def get_users
+    @users = User.where.not(id: current_user.id)
+  end
 
   def event_params
     params.require(:event)
