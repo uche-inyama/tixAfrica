@@ -18,7 +18,6 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(event_params)
-    debugger
     if @event.save
       @users.each do |user|
         Notification.create(recipient: user, user: current_user, action: "posted", notifiable: @event)
@@ -58,4 +57,3 @@ class EventsController < ApplicationController
       .permit(:start_date, :end_date, :time, :address, :theme, :details, :image, :event_type, :status, :user_id)
   end
 end
-

@@ -7,7 +7,6 @@ class LikesController < ApplicationController
     
     respond_to do |format|
       format.html { redirect_to events_path }
-      format.js
     end
   end
 
@@ -16,7 +15,6 @@ class LikesController < ApplicationController
 
     respond_to do |format| 
       format.html { redirect_to events_path }
-      format.js
     end
   end
 
