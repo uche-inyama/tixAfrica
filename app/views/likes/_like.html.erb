@@ -1,9 +1,9 @@
 <% if user.likes?(event) %>
-  <%= turbo_frame_tag dom_id(event) do%>
+  <%= turbo_frame_tag dom_id(event.user) do%>
     <%= button_to "#{pluralize(event.likes.count, 'like') || 0 }", event_like_path(event), method: :delete %>
   <% end %>
 <% else %>
-  <%= turbo_frame_tag dom_id(event) do%>
+  <%= turbo_frame_tag dom_id(event.user) do%>
     <%= button_to "#{pluralize(event.likes.count, 'like') || 0 }", event_like_path(event), method: :post %>
   <% end %>
 <% end %>

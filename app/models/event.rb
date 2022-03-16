@@ -3,6 +3,8 @@ class Event < ApplicationRecord
 
   belongs_to :user
   has_many :likes, dependent: :destroy
+
+  after_destroy_commit { broadcast_remove_to :events }
   
   validates_presence_of :time, 
   :address, :theme, :details, :event_type, :status
