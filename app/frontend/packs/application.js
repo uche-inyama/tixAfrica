@@ -5,11 +5,13 @@
 
 // import Rails from "@rails/ujs"
 // import Turbolinks from "turbolinks"
+import "@hotwired/turbo-rails"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import "./controllers"
+import "../controllers"
+import '../js/bootstrap_js_files.js'
+
 
 Rails.start()
 // Turbolinks.start()
 ActiveStorage.start()
-import "@hotwired/turbo-rails"

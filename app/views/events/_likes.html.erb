@@ -1,9 +1,0 @@
-<%= turbo_frame_tag dom_id(event) do %>
-  <% if user_signed_in? && current_user.likes?(event) %>
-    <%= link_to "Unlike", event_like_path(event), method: :delete %>
-  <% else %>
-    <%= link_to "Like", event_like_path(event), method: :post %>
-  <% end %>
-
-  <div><%= pluralize(event.likes.count, 'like') %></div>
-<% end %>

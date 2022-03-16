@@ -7,11 +7,11 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% if current_user %>
-          <%= link_to "Create Event", new_event_path, class: "px-3 btn btn-primary mx-2" %>
-          <%= link_to "logout", destroy_user_session_path, class: "px-3 btn btn-primary", method: :delete %>
+          <%= button_to "Create Event", new_event_path, class: "px-3 btn btn-primary mx-2" %>
+          <%= button_to "logout", destroy_user_session_path, class: "px-3 btn btn-primary", method: :delete %>
         <% else %>
           <%= link_to "sign up", new_user_registration_path, class: "px-3 mx-2 btn btn-primary" %>
-          <%= link_to "login", user_session_path, class: "px-3 btn btn-primary" %>
+          <%= button_to "login", user_session_path, class: "px-3 btn btn-primary" %>
         <% end %>
       </ul>
     </div>
